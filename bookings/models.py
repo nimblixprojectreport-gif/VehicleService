@@ -31,6 +31,9 @@ class Booking(TimeStampedModel):
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, db_index=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+       return f"{self.booking_reference} - {self.customer} - {self.service}"
 
 
 class BookingTimeline(TimeStampedModel):
