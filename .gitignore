@@ -1,18 +1,13 @@
-# Python
+# Python cache
 __pycache__/
 *.pyc
 
-# Django
+# Django database
 db.sqlite3
-*.log
-media/
 
 # Virtual environment
 venv/
 env/
 
-# VS Code
+# VS Code settings
 .vscode/
-
-# PyCharm
-.idea/
