@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ratings & Reviews</h1>
+        
+        <div class="rating-summary">
+            <div class="average-rating">
+                <span class="average-number" id="avgRating">0.0</span>
+                <div class="stars-container" id="avgStars"></div>
+                <span class="total-reviews" id="totalReviews">0 reviews</span>
+            </div>
+            <div class="rating-bars" id="ratingBars"></div>
+        </div>
+
+        <div class="write-review">
+            <h2>Write a Review</h2>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <i class="fa-regular fa-star" data-rating="1"></i>
+                        <i class="fa-regular fa-star" data-rating="2"></i>
+                        <i class="fa-regular fa-star" data-rating="3"></i>
+                        <i class="fa-regular fa-star" data-rating="4"></i>
+                        <i class="fa-regular fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="ratingValue" name="rating" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedback">Your Review (Optional)</label>
+                    <textarea id="feedback" name="feedback" rows="4" placeholder="Tell us about your experience..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerMobile">Customer Mobile no.</label>
+                    <input 
+                        type="text" 
+                        id="customerMobile" 
+                        name="customer" 
+                        placeholder="Enter customer mob no."
+                        required 
+                        pattern="[0-9]+" 
+                        inputmode="numeric"
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerMobile">Partner Mobile no.</label>
+                    <input 
+                        type="text" 
+                        id="partnerMobile" 
+                        name="partner" 
+                        placeholder="Enter partner mob no."
+                        required 
+                        pattern="[0-9]+" 
+                        inputmode="numeric"
+                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    >
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Review</button>
+            </form>
+        </div>
+
+        <div class="reviews-section">
+            <h2>Recent Reviews</h2>
+            <div class="filters">
+                <select id="ratingFilter">
+                    <option value="0">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                
+                <select id="sortFilter">
+                    <option value="newest">Newest First</option>
+                    <option value="highest">Highest Rated</option>
+                    <option value="lowest">Lowest Rated</option>
+                </select>
+            </div>
+            
+            <div id="reviewsList" class="reviews-list">
+                <div class="loading">Loading reviews...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
