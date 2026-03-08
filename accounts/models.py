@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 from core.models import TimeStampedModel
 
@@ -8,6 +8,26 @@ class Role(TimeStampedModel):
 
     def __str__(self):
         return self.name
+    
+class UserManager(BaseUserManager):
+
+    def create_user(self, mobile, password=None, **extra_fields):
+        if not mobile:
+            raise ValueError("Mobile number is required")
+
+        user = self.model(mobile=mobile, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, mobile, password=None, **extra_fields):
+        extra_fields.setdefault("is_superuser", True)
+
+        user = self.create_user(mobile, password, **extra_fields)
+        return user
+
+    def get_by_natural_key(self, mobile):
+        return self.get(mobile=mobile)    
 
 
 class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
@@ -24,9 +44,12 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = "mobile"
     REQUIRED_FIELDS = []
+
+    objects = UserManager()
 
     def __str__(self):
         return self.mobile
