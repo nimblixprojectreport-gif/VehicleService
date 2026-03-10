@@ -26,3 +26,10 @@ from django.test import TestCase
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_booking_list_requires_authentication(self):
+    self.client.logout()
+    url = reverse("booking-list")
+    response = self.client.get(url)
+
+    self.assertEqual(response.status_code, 401)
