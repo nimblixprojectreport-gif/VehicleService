@@ -20,3 +20,7 @@ class Vehicle(TimeStampedModel):
 
     def __str__(self):
         return self.registration_number
+    
+class Meta:
+    ordering = ["-created_at"]    
+    
