@@ -94,7 +94,9 @@ class Complaint(models.Model):
     # Who filed the complaint
     complainant = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         related_name='complaints_filed',
         help_text="User who filed the complaint"
     )
