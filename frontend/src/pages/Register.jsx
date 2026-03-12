@@ -1,82 +1,88 @@
-import { useForm } from 'react-hook-form';
-import { registerUser } from '../api/authApi';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useNavigate, Link } from 'react-router-dom';
+import AuthLayout from '../components/AuthLayout';
+import { register } from '../api/auth';
 
 export default function Register() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const navigate = useNavigate();
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
     try {
-      setLoading(true);
-      await registerUser(data);
-      toast.success('Account created successfully 🎉');
+      await register(form);
       navigate('/login');
     } catch (err) {
-      toast.error('Registration failed');
+      const data = err.response?.data;
+      setError(
+        data?.detail || data?.message ||
+        (data ? Object.values(data).flat().join(' ') : 'Registration failed')
+      );
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <motion.div
-          whileHover={{ rotateX: 5, rotateY: -5 }}
-          transition={{ type: 'spring', stiffness: 100 }}
-          className="backdrop-blur-xl bg-white/10 border border-white/20 p-8 rounded-2xl shadow-2xl w-96 text-white"
-        >
-          <h2 className="text-2xl font-bold mb-6 text-center">Create Account</h2>
+    <AuthLayout>
+      <h2 className="text-2xl font-bold mb-6 text-center">Create Account</h2>
 
+      <form onSubmit={handleRegister} className="space-y-4">
         <input
-          type="text"
+          name="name"
           placeholder="Full Name"
-          {...register('full_name', { required: 'Full name is required' })}
-          className="w-full p-3 mb-1 border rounded-lg bg-white/90 text-black placeholder:text-gray-500"
+          value={form.name}
+          onChange={handleChange}
+          required
+          className="w-full p-3 bg-gray-800 rounded text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.full_name && <p className="text-red-500 text-sm mb-3">{errors.full_name.message}</p>}
-
         <input
+          name="email"
           type="email"
           placeholder="Email"
-          {...register('email', { required: 'Email is required' })}
-          className="w-full p-3 mb-1 border rounded-lg bg-white/90 text-black placeholder:text-gray-500"
+          value={form.email}
+          onChange={handleChange}
+          required
+          className="w-full p-3 bg-gray-800 rounded text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.email && <p className="text-red-500 text-sm mb-3">{errors.email.message}</p>}
-
         <input
+          name="phone"
+          type="tel"
+          placeholder="Phone"
+          value={form.phone}
+          onChange={handleChange}
+          required
+          className="w-full p-3 bg-gray-800 rounded text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          name="password"
           type="password"
           placeholder="Password"
-          {...register('password', {
-            required: 'Password is required',
-            minLength: { value: 6, message: 'Minimum 6 characters required' },
-          })}
-          className="w-full p-3 mb-1 border rounded-lg bg-white/90 text-black placeholder:text-gray-500"
+          value={form.password}
+          onChange={handleChange}
+          required
+          className="w-full p-3 bg-gray-800 rounded text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.password && <p className="text-red-500 text-sm mb-4">{errors.password.message}</p>}
-
+        {error && <p className="text-red-400 text-sm">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className="metal-btn w-full flex items-center justify-center"
+          className="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors disabled:opacity-60"
         >
-          {loading ? (
-            <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
-          ) : (
-            'Register'
-          )}
+          {loading ? 'Creating account…' : 'Create Account'}
         </button>
-        </motion.div>
       </form>
-    </div>
+
+      <p className="mt-4 text-center text-sm text-gray-400">
+        Already have an account?{' '}
+        <Link to="/login" className="text-blue-400 hover:underline">Log in</Link>
+      </p>
+    </AuthLayout>
   );
 }
