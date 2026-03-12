@@ -31,9 +31,18 @@ class Booking(TimeStampedModel):
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, db_index=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+       return f"{self.booking_reference} - {self.customer} - {self.service}"
+   
 
 
 class BookingTimeline(TimeStampedModel):
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
-    status = models.CharField(max_length=20)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="timeline")
+    status = models.CharField(max_length=20 , choices=Booking.STATUS_CHOICES , db_index=True)
     note = models.TextField(null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.booking.booking_reference} - {self.status}"
+
+
