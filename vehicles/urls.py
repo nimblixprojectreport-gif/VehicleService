@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
-from .views import VehicleViewSet
+from .views import PartnerViewSet
 
 router = DefaultRouter()
-router.register(r'', VehicleViewSet, basename='vehicles')
+router.register(r'partners', PartnerViewSet, basename='partners')
 
 urlpatterns = router.urls
