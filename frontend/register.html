@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="three-bg"></div>
+
+  <div class="auth-container">
+    <h2>Create Account</h2>
+
+    <form id="registerForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="password" placeholder="Password" required>
+
+      <label class="terms">
+        <input type="checkbox" required> I agree to Terms &amp; Privacy
+      </label>
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <div class="auth-links">
+      Already have an account?
+      <a href="login.html">Log in</a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="three-bg.js"></script>
+  <script src="auth.js"></script>
+
+</body>
+</html>
