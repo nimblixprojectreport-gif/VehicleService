@@ -16,7 +16,7 @@ class BookingAdmin(admin.ModelAdmin):
         "scheduled_time",
         "total_amount",
     )
-    search_fields = ("booking_reference", "customer__username", "partner__username")
+    search_fields = ("booking_reference", "customer__mobile", "partner__mobile")
     list_filter = ("status", "scheduled_date", "service")
 
 

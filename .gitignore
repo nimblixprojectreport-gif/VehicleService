@@ -1,6 +1,5 @@
 # Python cache
 __pycache__/
-_pycache__/
 *.pyc
 *.pyo
 *.pyd
@@ -22,3 +21,9 @@ env/
 
 # PyCharm
 .idea/
+
+# Static files
+staticfiles/
+
+# Environment
+.hintrc

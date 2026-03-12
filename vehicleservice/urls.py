@@ -22,6 +22,7 @@ urlpatterns = [
     path('api/', include('otp_auth.urls')),
     path('api/ratings/', include('ratings.urls')),
     path('api/payments/', include('payments.urls')),
+    path('api/bookings/', include('bookings.urls')),
     path('api/notifications/', include('notifications.urls')),
     path('api/complaints/', include('complaints.urls')),
 ]

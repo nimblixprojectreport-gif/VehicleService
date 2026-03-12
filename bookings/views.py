@@ -1,11 +1,11 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Booking, BookingTimeline
+from .serializers import BookingSerializer, BookingtTimelineSerializer
 
 
 class BookingViewSet(viewsets.ModelViewSet):
-    """Placeholder — full implementation pending."""
+    serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -14,4 +14,8 @@ class BookingViewSet(viewsets.ModelViewSet):
         if status_param:
             queryset = queryset.filter(status=status_param)
         return queryset
-            queryset = queryset.filter(status=status_param)
+
+
+class BookingTimelineViewset(viewsets.ModelViewSet):
+    queryset = BookingTimeline.objects.all()
+    serializer_class = BookingtTimelineSerializer
