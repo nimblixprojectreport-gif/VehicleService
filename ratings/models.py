@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator , MaxValueValidator
 
 
 class Rating(TimeStampedModel):
-    booking = models.OneToOneField(Booking, on_delete=models.CASCADE)
+    booking = models.OneToOneField(Booking, on_delete=models.CASCADE,null=True , blank= True)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     partner = models.ForeignKey(User, related_name="ratings", on_delete=models.CASCADE)
 

@@ -1,5 +1,9 @@
-# Python
+# Python cache
 __pycache__/
+*.pyc
+
+# Django database
+db.sqlite3
 _pycache__/
 *.pyc
 *.pyo
@@ -8,3 +12,26 @@ _pycache__/
 # Database
 db.sqlite3
 *.sqlite3
+
+# Django
+*.log
+media/
+
+# Virtual environment
+venv/
+env/
+
+# VS Code settings
+.vscode/
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Static files
+staticfiles/
+
+# Environment
+.hintrc
+ vehicalserviceteam
