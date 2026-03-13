@@ -5,7 +5,6 @@ from .models import Partner
 
 class PartnerViewSet(viewsets.ModelViewSet):
     queryset = Partner.objects.all()
-    serializer_class = PartnerSerializer
 
     # Custom API: availability update
     @action(detail=True, methods=['patch'])
