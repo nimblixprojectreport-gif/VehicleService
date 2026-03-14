@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Vehicle, Driver
+from .models import Vehicle, Driver, RideRequest
 import json
 
 def vehicle_list(request):
@@ -39,7 +39,7 @@ def delete_vehicle(request, vehicle_id):
         except Vehicle.DoesNotExist:
             return JsonResponse({"error": "Vehicle not found"})  
         
-def driver_list(requet):
+def driver_list(request):
     drivers = Driver.objects.all().values()
     return JsonResponse({"data":
 list(drivers)})
@@ -91,4 +91,38 @@ def update_driver(request, driver_id):
             return JsonResponse({"message": "Driver updated successfully"})
         except Driver.DoesNotExist:
                 return JsonResponse({"error": "Driver not found"})
-                
+
+@csrf_exempt
+def create_ride_request(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            pickup_location = data.get("pickup_location")
+            drop_location = data.get("drop_location")
+            user_id = data.get("user_id")
+
+            driver = Driver.objects.first()
+            
+            if not driver:
+                return JsonResponse({"error": "No driver available"})
+            
+            ride = RideRequest.objects.create(
+                user_id=user_id,
+                driver=driver,
+                vehicle=driver.vehicle,
+            pickup_location = pickup_location,
+                                drop_location = drop_location
+            )
+
+            return JsonResponse({
+                "message": "Ride created successfully",
+                "driver": driver.name,
+                "vehicle": driver.vehicle.registration_number,
+                "pickup_location": pickup_location,
+                "drop_location": drop_location
+            })
+        
+        except Exception as e:
+            return JsonResponse({"error": str(e)})
+    
+    return JsonResponse({"error": "Only POST method allowed"})

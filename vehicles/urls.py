@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import vehicle_list, add_vehicle, delete_vehicle, driver_list, add_driver, delete_driver, update_driver
+from .views import vehicle_list, add_vehicle, delete_vehicle, driver_list, add_driver, delete_driver, update_driver, create_ride_request
 
 urlpatterns = [
     path('', vehicle_list,
@@ -16,5 +16,6 @@ name='add_driver'),
     path('drivers/delete/<int:driver_id>/',
 delete_driver, name='delete_driver'),   
     path('drivers/update/<int:driver_id>/',
-update_driver, name='update_driver'),      
+update_driver, name='update_driver'),   
+    path('ride-request/',create_ride_request),
 ]

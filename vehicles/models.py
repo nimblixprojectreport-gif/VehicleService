@@ -39,3 +39,37 @@ class Driver(TimeStampedModel):
 
     def __str__(self):
         return self.name
+    
+class RideRequest(TimeStampedModel):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="ride_requests"
+    ) 
+
+    driver = models.ForeignKey(
+        Driver,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="rides"
+    )
+
+    vehicle = models.ForeignKey(
+        Vehicle,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="rides"
+    )
+
+    pickup_location = models.CharField(max_length=255)
+    drop_location = models.CharField(max_length=255)
+
+    status = models.CharField(
+        max_length=50,
+        default="requested"
+    )
+    
+    def __str__(self):
+        return f"{self.pickup_location} -> {self.drop_location}"
