@@ -1,7 +1,10 @@
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PartnerViewSet
+from .views import PartnerServiceViewSet
 
 router = DefaultRouter()
-router.register('partners', PartnerViewSet)
+router.register(r'services', PartnerServiceViewSet)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+]

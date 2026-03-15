@@ -1,6 +1,9 @@
 from django.test import TestCase
-
-    def test_role_based_access(self):
+from .models import Booking
+from accounts.models import User
+from django.urls import reverse
+from rest_framework import status
+def test_role_based_access(self):
         partner = User.objects.create_user(
             email="partner@test.com",
             password="password",
