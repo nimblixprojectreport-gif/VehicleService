@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Booking
+from .serializers import BookingSerializer
 
-        status_param = self.request.query_params.get("status")
-        if status_param:
-            queryset = queryset.filter(status=status_param)
+
+class BookingListCreateView(generics.ListCreateAPIView):
+
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer

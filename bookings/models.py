@@ -7,42 +7,55 @@ from services.models import ServiceCategory
 
 class Booking(TimeStampedModel):
 
-    STATUS_CHOICES = (
+    STATUS = (
         ("PENDING", "Pending"),
-        ("ASSIGNED", "Assigned"),
         ("ACCEPTED", "Accepted"),
         ("IN_PROGRESS", "In Progress"),
         ("COMPLETED", "Completed"),
         ("CANCELLED", "Cancelled"),
-        ("FAILED", "Failed"),
     )
 
-    booking_reference = models.CharField(max_length=30, unique=True)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
-    partner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.PROTECT)
-    service = models.ForeignKey(ServiceCategory, on_delete=models.PROTECT)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="bookings"
+    )
 
-    scheduled_date = models.DateField()
-    scheduled_time = models.TimeField()
+    vehicle = models.ForeignKey(
+        Vehicle,
+        on_delete=models.CASCADE,
+        related_name="bookings"
+    )
 
-    service_latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    service_longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    service = models.ForeignKey(
+        ServiceCategory,
+        on_delete=models.CASCADE,
+        related_name="bookings"
+    )
 
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, db_index=True)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    
+    booking_date = models.DateField()
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS,
+        default="PENDING"
+    )
+
     def __str__(self):
-       return f"{self.booking_reference} - {self.customer} - {self.service}"
-   
+        return f"{self.vehicle} - {self.service}"
 
 
 class BookingTimeline(TimeStampedModel):
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="timeline")
-    status = models.CharField(max_length=20 , choices=Booking.STATUS_CHOICES , db_index=True)
-    note = models.TextField(null=True, blank=True)
-    
+
+    booking = models.ForeignKey(
+        Booking,
+        on_delete=models.CASCADE,
+        related_name="timeline"
+    )
+
+    status = models.CharField(max_length=20)
+
+    note = models.TextField(blank=True, null=True)
+
     def __str__(self):
-        return f"{self.booking.booking_reference} - {self.status}"
-
-
+        return f"{self.booking} - {self.status}"
