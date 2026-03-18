@@ -1,0 +1,246 @@
+/* ═══════════════════════════════════════════════
+   Register.css  —  AutoServe Register page styles
+   Imports shared styles from Login.css
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* Import shared AS- styles from Login.css */
+@import "./Login.css";
+
+/* ── Root ─────────────────────────────────────── */
+.reg-root {
+  min-height: 100vh;
+  background: #0d1117;
+  font-family: 'DM Sans', sans-serif;
+  color: #e6edf3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Navbar ───────────────────────────────────── */
+.reg-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #0d1117;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.reg-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.reg-nav-icon {
+  width: 38px;
+  height: 38px;
+  background: #3b82f6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.4);
+}
+
+.reg-nav-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e6edf3;
+  letter-spacing: -0.3px;
+}
+
+.reg-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.reg-nav-text {
+  font-size: 14px;
+  color: #8b949e;
+}
+
+.reg-nav-login-btn {
+  padding: 8px 18px;
+  background: #3b82f6;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(59,130,246,0.3);
+}
+.reg-nav-login-btn:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 14px rgba(59,130,246,0.4);
+}
+
+/* ── Main ─────────────────────────────────────── */
+.reg-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px 16px 32px;
+}
+
+.reg-card {
+  width: 100%;
+  max-width: 420px;
+  animation: pageRise 0.4s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* ── Hero image with overlay ──────────────────── */
+.reg-hero-wrap {
+  position: relative;
+  width: 100%;
+  height: 186px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 26px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.reg-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Dark gradient overlay */
+.reg-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 18px 16px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.reg-hero-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #3b82f6;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.reg-hero-tagline {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ── Headings ─────────────────────────────────── */
+.reg-heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.6px;
+  margin-bottom: 8px;
+}
+
+.reg-sub {
+  font-size: 14px;
+  color: #8b949e;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ── Form ─────────────────────────────────────── */
+.reg-form { display: flex; flex-direction: column; gap: 14px; }
+
+/* Label with icon */
+.reg-label-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
+  vertical-align: middle;
+  color: #6e7681;
+}
+
+/* Checkbox */
+.reg-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.reg-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.reg-checkbox-text {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.5;
+}
+
+/* Trust line */
+.reg-trust {
+  text-align: center;
+  font-size: 12.5px;
+  color: #484f58;
+  line-height: 1.6;
+  margin-top: 6px;
+  padding: 0 8px;
+}
+
+/* ── Footer ───────────────────────────────────── */
+.reg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  font-size: 12px;
+  color: #484f58;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.reg-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.reg-footer-links a {
+  color: #484f58;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.reg-footer-links a:hover { color: #8b949e; }
+
+@media (max-width: 480px) {
+  .reg-footer { flex-direction: column; gap: 8px; text-align: center; }
+  .reg-nav-text { display: none; }
+}
