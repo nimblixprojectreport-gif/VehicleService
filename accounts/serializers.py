@@ -19,3 +19,25 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['full_name', 'email']
+
+
+class LoginSerializer(serializers.Serializer):
+    mobile = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, attrs):
+        mobile = attrs.get('mobile')
+        password = attrs.get('password')
+
+        if not User.objects.filter(mobile=mobile).exists():
+            raise serializers.ValidationError('User not found.')
+
+        user = User.objects.get(mobile=mobile)
+        if not user.check_password(password):
+            raise serializers.ValidationError('Invalid password.')
+
+        if not user.is_active:
+            raise serializers.ValidationError('User account is disabled.')
+
+        attrs['user'] = user
+        return attrs

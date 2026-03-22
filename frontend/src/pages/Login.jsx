@@ -1,7 +1,7 @@
 /**
  * Login.jsx
  * Route: /login
- * Matches AutoServe Login UI (Image 2) exactly.
+ * Matches AutoServe Login UI exactly.
  * Connects to: /forgot-password, /register, /dashboard
  */
 
@@ -66,7 +66,6 @@ const IconCar = () => (
 );
 
 // ── Car image ─────────────────────────────────────
-// Replace with your own image path e.g. import carImg from "../assets/car.jpg"
 const CAR_IMAGE = "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80&fit=crop";
 
 export default function Login() {

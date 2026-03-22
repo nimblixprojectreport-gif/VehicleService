@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import ServiceOptions from '../pages/ServiceOptions';
 import ServiceManagement from '../pages/ServiceManagement';
+import ForgotPassword from '../pages/ForgotPassword';
+import OtpVerification from '../pages/OtpVerification';
+import ResetPassword from '../pages/ResetPassword';
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('access');
@@ -12,9 +16,14 @@ export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/booking/service-options" element={<ServiceOptions />} />
         <Route path="/admin/services" element={<ServiceManagement />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/otp-verification" element={<OtpVerification />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/dashboard"
           element={

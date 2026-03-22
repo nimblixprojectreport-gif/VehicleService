@@ -1,11 +1,17 @@
 from django.db import models
 from core.models import TimeStampedModel
 from accounts.models import User
+from partners.models import Partner
 
 
 class Vehicle(TimeStampedModel):
     user = models.ForeignKey(
         User,
+        on_delete=models.CASCADE,
+        related_name="vehicles"
+    )
+    partner = models.ForeignKey(
+        Partner,
         on_delete=models.CASCADE,
         related_name="vehicles"
     )

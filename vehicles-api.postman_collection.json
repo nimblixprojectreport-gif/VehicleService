@@ -1,0 +1,109 @@
+{
+  "info": {
+    "name": "VehicleService API - Tokens & Testing",
+    "description": "Postman collection for VehicleService Django API. First run login to get token, then use in protected endpoints. Server at http://127.0.0.1:8000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Login - Get Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mobile\": \"1234567890\",\n  \"password\": \"testpass123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/accounts/login/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "accounts", "login", ""]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "  const jsonData = pm.response.json();",
+              "  pm.collectionVariables.set(\"token\", jsonData.token);",
+              "  console.log('Token saved:', jsonData.token);",
+              "}",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicles - List (Authenticated)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/vehicles/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "vehicles", ""]
+        }
+      }
+    },
+    {
+      "name": "Bookings - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/bookings/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "bookings", ""]
+        }
+      }
+    },
+    {
+      "name": "Partners - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Token {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/partners/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "partners", ""]
+        }
+      }
+    }
+  ]
+}
