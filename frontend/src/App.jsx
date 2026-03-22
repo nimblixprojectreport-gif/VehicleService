@@ -5,6 +5,8 @@ import ForgotPassword from './pages/ForgotPassword';
 import OtpVerification from './pages/OtpVerification';
 import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
+import ServiceOptions from './pages/ServiceOptions';
+import ServiceManagement from './pages/ServiceManagement';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token');
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/otp-verification" element={<OtpVerification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/booking/service-options" element={<ServiceOptions />} />
+        <Route path="/admin/services" element={<ServiceManagement />} />
 
         <Route
           path="/dashboard"
