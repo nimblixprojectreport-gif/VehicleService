@@ -1,3 +1,16 @@
+/**
+ * ServiceManagement.jsx
+ * Route: /admin/services
+ *
+ * SRS Coverage (FR-06):
+ *   - Admin creates service categories
+ *   - Defines service descriptions
+ *   - Sets pricing (base_price)
+ *   - Enable / disable (archive) services
+ *
+ * Fully self-contained — all API calls inline, no external imports.
+ * No booking connection.
+ */
 
 import { useState, useEffect, useRef } from "react";
 import "./ServiceManagement.css";

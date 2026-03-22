@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════
+   ServiceManagement.css
+   Admin Service Management panel — light theme, orange accents.
+   Matches the design image exactly.
+   ═══════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
@@ -301,7 +306,6 @@
   line-height: 1.55;
   margin-bottom: 10px;
   display: -webkit-box;
-  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
