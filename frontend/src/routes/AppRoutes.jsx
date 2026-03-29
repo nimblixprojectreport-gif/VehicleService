@@ -6,6 +6,7 @@ import ServiceManagement from '../pages/ServiceManagement';
 import ForgotPassword from '../pages/ForgotPassword';
 import OtpVerification from '../pages/OtpVerification';
 import ResetPassword from '../pages/ResetPassword';
+import ServiceCompletionReport from '../pages/ServiceCompletionReport';
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('access');
@@ -19,6 +20,9 @@ export default function AppRoutes() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/report" element={<ServiceCompletionReport />} />
+        <Route path="/report/:id" element={<ServiceCompletionReport />} />
+        <Route path="/booking/completion/:id" element={<ServiceCompletionReport />} />
         <Route path="/booking/service-options" element={<ServiceOptions />} />
         <Route path="/admin/services" element={<ServiceManagement />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
