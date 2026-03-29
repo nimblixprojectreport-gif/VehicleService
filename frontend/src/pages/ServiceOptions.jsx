@@ -1,32 +1,21 @@
-/**
- * ServiceOptions.jsx
- * Route: /booking/service-options
- *
- * Fully self-contained — no external API imports.
- * All API calls are written inline.
- *
- * SRS Coverage:
- *   FR-07  Create Booking — vehicle, service, date/time, location
- *   FR-10  Auto Assignment — partner notified after booking confirmed
- *   FR-11  Payment — cost shown before confirm
- */
+
  
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ServiceOptions.css";
  
-// ── Config ────────────────────────────────────────────────────
+
 const API_BASE = "http://127.0.0.1:8000/api/v1";
 const PICKUP_FEE = 15;
  
-// ── Saved addresses (replace with real /vehicles/ API call) ──
+
 const SAVED_ADDRESSES = [
   { id: 1, label: "Home", full: "123 Maple Street, San Francisco, CA 94105" },
   { id: 2, label: "Work", full: "450 Market St, San Francisco, CA 94111" },
   { id: 3, label: "Other", full: "Enter a custom address" },
 ];
  
-// ── Inline API call ───────────────────────────────────────────
+
 async function postBooking(payload) {
   const token = localStorage.getItem("token") || "";
   return fetch(`${API_BASE}/bookings/`, {

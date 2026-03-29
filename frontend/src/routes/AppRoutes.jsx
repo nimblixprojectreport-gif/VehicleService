@@ -7,6 +7,7 @@ import ForgotPassword from '../pages/ForgotPassword';
 import OtpVerification from '../pages/OtpVerification';
 import ResetPassword from '../pages/ResetPassword';
 import ServiceCompletionReport from '../pages/ServiceCompletionReport';
+import PlatformSettings from '../pages/PlatformSettings';
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('access');
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route path="/report" element={<ServiceCompletionReport />} />
         <Route path="/report/:id" element={<ServiceCompletionReport />} />
         <Route path="/booking/completion/:id" element={<ServiceCompletionReport />} />
+        <Route path="/admin/settings" element={<PlatformSettings />} />
         <Route path="/booking/service-options" element={<ServiceOptions />} />
         <Route path="/admin/services" element={<ServiceManagement />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
