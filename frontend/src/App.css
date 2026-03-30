@@ -86,6 +86,22 @@
 .header-right {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  background: var(--border);
+  border-color: var(--accent);
 }
 
 .clear-btn {
@@ -200,13 +216,22 @@
   border-color: var(--accent);
 }
 
-.chat-container {
+.main-content {
   flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background: var(--bg-primary);
+}
+
+.chat-interface {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 70px);
-  position: relative;
+  height: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   background: var(--bg-primary);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .messages {
@@ -429,7 +454,55 @@
   border-color: var(--accent);
 }
 
+.welcome {
+  text-align: center;
+  padding: 4rem;
+  color: var(--text-primary);
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+.welcome h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.welcome p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
+  .header {
+    padding: 0.5rem 1rem;
+  }
+  
+  .header-info h1 {
+    font-size: 1rem;
+  }
+  
+  .header-right {
+    gap: 0.25rem;
+  }
+  
+  .nav-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .clear-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
   .message {
     max-width: 90%;
   }
@@ -442,16 +515,39 @@
     padding: 0.75rem 1rem;
   }
   
-  .header {
-    padding: 0.5rem 1rem;
+  .welcome {
+    padding: 2rem;
   }
   
-  .header-info h1 {
-    font-size: 1rem;
+  .welcome h2 {
+    font-size: 1.5rem;
   }
-  
-  .clear-btn {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.75rem;
-  }
+  /* Chat Interface Styles - Keep existing chatbot styles above */
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Navigation Link in Chatbot Header */
+.nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  margin-right: 0.5rem;
+}
+
+.nav-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 }

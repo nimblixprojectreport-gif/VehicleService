@@ -1,0 +1,75 @@
+.complaint-list {
+  width: 100%;
+}
+
+.complaint-list h2 {
+  color: #1a2b3c;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.complaint-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.complaint-table th {
+  text-align: left;
+  padding: 1rem;
+  color: #6b7a8d;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-bottom: 2px solid #e0e0e0;
+  background: #f8f9fa;
+}
+
+.complaint-table td {
+  padding: 1rem;
+  color: #1a2b3c;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.complaint-id {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.view-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.view-btn:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7a8d;
+  padding: 2rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7a8d;
+}
+
+@media (max-width: 768px) {
+  .complaint-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .complaint-list {
+    overflow-x: auto;
+  }
+}

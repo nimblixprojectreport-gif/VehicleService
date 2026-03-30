@@ -1,0 +1,296 @@
+/* Main Layout Container */
+.complaints-layout {
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Brand Section */
+.nav-brand h1 {
+  font-size: 1.5rem;
+  color: #1a2b3c;
+  margin: 0;
+  font-weight: 600;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  color: #6b7a8d;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+.nav-links a.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* Profile Section */
+.nav-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-name {
+  font-weight: 500;
+  color: #1a2b3c;
+  background: #f0f2f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Main Content Area */
+.complaints-main {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* Content Header */
+.content-header {
+  margin-bottom: 2rem;
+}
+
+.content-header h2 {
+  font-size: 2rem;
+  color: #1a2b3c;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.content-header p {
+  color: #6b7a8d;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Two Column Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+/* Left Column - Main Content */
+.left-column {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Right Column - Sidebar */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card Styles */
+.support-card,
+.commitment-card,
+.faq-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Support Card */
+.support-card h3 {
+  color: #1a2b3c;
+  margin-bottom: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f2f5;
+  padding-bottom: 0.75rem;
+}
+
+.support-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.support-item:last-child {
+  border-bottom: none;
+}
+
+.support-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+  border-radius: 50%;
+}
+
+.support-item strong {
+  display: block;
+  color: #1a2b3c;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.support-item p {
+  color: #6b7a8d;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Commitment Card */
+.commitment-card h3 {
+  color: #1a2b3c;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.commitment-card p {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.stats-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: #e5edff;
+  color: #2563eb;
+  padding: 0.35rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1px solid #2563eb20;
+}
+
+/* FAQ Card */
+.faq-card h4 {
+  color: #1a2b3c;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.faq-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-card li {
+  padding: 0.75rem 0;
+  color: #4a5568;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f5;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.faq-card li:last-child {
+  border-bottom: none;
+}
+
+.faq-card li:hover {
+  color: #2563eb;
+  padding-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .complaints-main {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .complaints-main {
+    padding: 0 1rem;
+    margin: 1rem auto;
+  }
+  
+  .top-nav {
+    padding: 1rem;
+  }
+  
+  .nav-brand h1 {
+    font-size: 1.2rem;
+  }
+  
+  .content-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content-header p {
+    font-size: 1rem;
+  }
+  
+  .left-column {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-tagline {
+    display: none;
+  }
+  
+  .profile-name {
+    display: none;
+  }
+}
